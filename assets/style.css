@@ -1,0 +1,98 @@
+:root{
+    --green: #176b43;
+    --deep-green: #0f5132;
+    --soft-green: #e9f0ed;
+}
+
+body    {
+    background: #e9f0ed;
+    color: #294536;
+    font-family: "Leelawadee UI", Tahoma, sans-serif;
+}
+
+.hero h1,
+.home-section-heading h2 {
+    font-weight: 700;
+}
+
+.hero {
+    padding: clamp(24px, 5vw, 48px) 32px;
+    background: linear-gradient(140deg, var(--deep-green), #38ec95);
+    border-radius: 24px;
+    color: #fff;
+}
+
+.navbar {
+    background: linear-gradient(90deg, var(--deep-green), #24a064); 
+}
+
+.home-campaign {
+    align-items: center;
+    padding: clamp(24px, 5vw, 44px);
+    background: linear-gradient(90deg, var(--deep-green), #349767);
+    border-radius: 24px;
+    color: #fff;
+}
+
+
+.card,
+.impact-card {
+    border: 0;
+    border-radius: 24px;
+    box-shadow: 0, 3px 18px, rgba(15, 83, 49, 0.055);
+}
+
+.home-section-heading h2,
+.article-heading h3,
+.article-art h4 {
+    color: var(--deep-green);
+}
+
+.btn {
+    border-radius: 24px;
+    padding-inline: 18;
+    transition: -2s;
+}
+
+.campaign-copy {
+    max-width: 720;
+}
+
+.article-count,
+.article-label {
+    border-radius: 50px;
+    color: var(--green);
+    padding: 7px 12px;
+    background: var(--soft-green);
+    font-weight: 700;
+}
+
+.journy-card {
+    color: inherit;
+}
+
+.article-art    {
+    place-items: center;
+    /* min-height: 220px; */
+    max-width: fit-content;
+    background: linear-gradient(148deg, #fff, var(--green));
+}
+
+.table {
+    overflow: hidden;
+    border-radius: 16px;
+}
+
+.card-journy {
+    color: inherit;
+}
+
+@media (max-width:600) {
+    .home-campaign {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .article-heading {
+        align-items: flex-start;
+    }
+}
