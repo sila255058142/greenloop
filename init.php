@@ -20,11 +20,11 @@ function e($value){
 
 
 function upload($f){
-    $file = $_FILES[$f]?? null;
-    $ext = strtolower(pathinfo($file['name'] , PATHINFO_EXTENSION));
+    $file = $_FILES[$f]?? [];
     $upload = __DIR__ . '/upload';
-    $name = bin2hex(random_bytes(16) . '.' . $ext);
-    return move_uploaded_file($file['tmp_name'] , $upload. '/' . $name)? $name : false ; 
+    $name = bin2hex(random_bytes(16)) . '.' . pathinfo($file['name']?? '', PATHINFO_EXTENSION);
+    @mkdir($upload, 0755, true);
+    return empty($file['name']) ? '' : (move_uploaded_file($file['tmp_name'], $upload . '/' . $name) ? $name : false);
 }
 require_once __DIR__. '/header.php';
 ?>

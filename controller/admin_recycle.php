@@ -15,6 +15,7 @@ if(isset($_POST['approve'])){
         $rId = (int) $_POST['id'];
         $r = $db->query("SELECT r.weight_kg ,r.user_id, c.co2_per_kg FROM recycles r JOIN categories c ON c.id = r.category_id WHERE r.id = $rId AND  r.status = 'pending'")->fetch_assoc();
         // var_dump($r);die;
+        
         $points = round($r['weight_kg'] * 20);
         $co2 = $r['weight_kg'] * $r['co2_per_kg'];
         $userId = (int) $r['user_id'];

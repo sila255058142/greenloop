@@ -37,7 +37,7 @@ head('รีไซเคิล');
             <label for="" class="form-label mt-2">รายการ</label>
             <input type="text" class="form-control" name="item_name">
             <label for="" class="form-label mt-2">น้ำหนักโดยประมาณ</label>
-            <input type="number" class="form-control" name="weight_kg" id="recycle-weight">
+            <input type="number" class="form-control" name="weight_kg" id="recycle-weight" min="1" step="1" required>
             <label for="" class="form-label mt-2">ประเภทขนส่ง</label>
             <select name="delivery_type" class="form-select mt-2">
                 <option value="">เลือกประเภทขนส่ง</option>
@@ -49,30 +49,29 @@ head('รีไซเคิล');
             <div>
                 <p class="text-success small" id="recycle-estimate">เลือกหมวดและกรอกน้ำหนักเพื่อดูปริมาณคาร์บอน</p>
                 <label for="" class="mt-2 form-label">(รูปสินค้า ไม่บังคับ JPG PNG GIF)</label>
-                <input type="file" name="image" class="form-control" accept="image/*">
+                <input type="file" name="image" class="form-control" accept=".jpg,.jpeg,.png,.gif">
                 <button class="btn btn-success mt-4">ส่งคำขอ</button>
             </div>
         </div>
     </div>
 </form>
 <script>
-    $(domcument).ready(function(){
-        const $recycleCategory = $('recycle-category');
-        const $recycleWeight = $('recycle-weight');
-        const $estimateDisplay = $('recycle-estimate');
+    $(function(){
+        const $category = $('#recycle-category');
+        const $weight = $('#recycle-weight');
+        const $estimateDisplay = $('#recycle-estimate');
 
         const updateEstimate = () => {
-            const factor = parsefloat($recycle.find('select').data('factor')) || 0;
-            const weight = parsefloat($weight.val()) || 0;
+            const factor = parseFloat($category.find(':selected').data('factor')) || 0;
+            const weight = parseFloat($weight.val()) || 0;
             if (!factor || weight <= 0){
                 $estimateDisplay.text('เลือกหมวดและกรอกน้ำหนักเพื่อดูปริมาณคาร์บอน');
                 return;
             }
-                const totalEstimate = factor * weight;
-                const formattedEstimate = totalEstimate.toFixed(2);
-                $estimateDisplay.text('คาดว่าจะได้ ${formattedEstimate}');
+            const totalEstimate = factor * weight;
+            $estimateDisplay.text(`คาดว่าจะลดได้ ${totalEstimate.toFixed(2)} kgCO2e`);
         };
-        $category.on('change' . updateEstimate);
-        $wegith.on('input' . updateEstimate);
-    })
+        $category.on('change', updateEstimate);
+        $weight.on('input', updateEstimate);
+    });
 </script>

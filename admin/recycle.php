@@ -22,8 +22,8 @@ head('จัดการข้อมูลรีไซเคิล');
                 <tr>
                     <td>
                         <?php if($r['image'] !== ''): ?>
-                            <a href="../upload<?= e($r['image'])?>" target="blank" rel="noopener">
-                                <img src="../upload/<?= $r['image']?>" alt="รูปสินค้า" style="max-width: 70px; max-height: 50px; object-fit: cover;">
+                            <a href="../upload/<?= e($r['image'])?>" target="_blank" rel="noopener">
+                                <img src="../upload/<?= e($r['image'])?>" alt="รูปสินค้า" style="max-width: 70px; max-height: 50px; object-fit: cover;">
                             </a>
                         <?php else: ?>
                             -   
