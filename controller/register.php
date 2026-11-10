@@ -16,6 +16,7 @@ $db->query("INSERT INTO users (name , email, phone, password, question, answer) 
 
 $safeName = $db->real_escape_string($name);
 $db->query("INSERT INTO notifications (user_id , title, message , link) SELECT id, 'สมาชิกใหม่' , CONCAT('$safeName' , ' สมัครสมาชิกสำเร็จ') , 'admin/users.php' FROM users WHERE role = 'admin'");
+
 go('../login.php' , 'สมัครสมาชิกสำเร็จ');
 
 
